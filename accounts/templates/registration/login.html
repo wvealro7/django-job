@@ -1,0 +1,52 @@
+
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+{% block body %}
+    <!-- bradcam_area  -->
+    <div class="bradcam_area bradcam_bg_1">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>Login</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ bradcam_area  -->
+      <div class="job_details_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    
+                    
+                    <div class="apply_job_form white-bg">
+                        {% if form.errors %}
+                            <p>Your username and password didn't match. Please try again.</p>
+                        {% endif %}
+                        
+                        {% if next %}
+                            {% if user.is_authenticated %}
+                            <p>Your account doesn't have access to this page. To proceed,
+                            please login with an account that has access.</p>
+                            {% else %}
+                            <p>Please login to see this page.</p>
+                            {% endif %}
+                        {% endif %}
+                        <form method="post"  action="{% url 'login' %}">
+                            {% csrf_token %}
+                            {% bootstrap_form form %}
+                            {% buttons %}
+                            <button class="boxed-btn3 w-100" type="submit">Login</button>
+                            {% endbuttons %}
+                        </form>
+                        <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock body %}
