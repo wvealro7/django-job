@@ -1,3 +1,10 @@
 {
-      "python.pythonPath": "C:\\Users\\wve\\.virtualenvs\\job-BLVruvng\\Scripts\\python.exe"
+      "python.pythonPath": "C:\\Users\\wve\\.virtualenvs\\job-BLVruvng\\Scripts\\python.exe",
+      "python.linting.pylintArgs": [
+            "--load-plugins=pylint_django"
+        ],
+    
+        "[python]": {
+    
+        }
 }

@@ -1,5 +1,9 @@
 from django.db import models
 from django.utils.text import slugify
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
 def image_upload(instance,file):
       file_name,extenion = file.split(".")
 
@@ -11,6 +15,7 @@ JOB_TYPE = (
 )
 
 class Job(models.Model):
+      owner = models.ForeignKey(User,on_delete=models.CASCADE,related_name='job_owner')
       title = models.CharField(max_length=150)
       #location
       job_type          = models.CharField(max_length=5, choices=JOB_TYPE)
